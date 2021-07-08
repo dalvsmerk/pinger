@@ -1,10 +1,10 @@
 # Pinger
 
-Checks running status of google.com.
+Checks running status of a remote host.
 
 ## API
 
 TODO..
 
 ## TODO
-- [ ] Check running status of any service
+- [x] Check running status of any service
