@@ -9,10 +9,9 @@ function setupLogger() {
     ),
     defaultMeta: { service: 'pinger' },
     transports: [
-      new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
+      // Winston does not support separate file transports withing one logger
+      // TODO: Implement wrapper that would run separate instances of logger for each severity level
       new winston.transports.File({ filename: 'logs/info.log', level: 'info' }),
-      new winston.transports.File({ filename: 'logs/debug.log', level: 'debug' }),
-      new winston.transports.File({ filename: 'logs/combined.log' }), // else levels
     ],
   });
 }

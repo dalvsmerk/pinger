@@ -1,9 +1,15 @@
 const { setupLogger } = require('./logging');
+const { NetworkService } = require('./network/network.service');
+const { PingerService } = require('./pinger/pinger.service');
 
-watchServiceStatus('https://www.google.com/');
+watchServiceStatus('www.google.com');
 
 function watchServiceStatus(url) {
-  const logger = setupLogger();
+  const loggerService = setupLogger();
+  const networkService = new NetworkService();
 
-  logger.debug(`Pinging ${url} service`);
+  loggerService.debug(`Pinging ${url} service`);
+
+  const pingerService = new PingerService(url, networkService, loggerService);
+  pingerService.watchStatus();
 }
