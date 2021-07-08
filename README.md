@@ -7,4 +7,4 @@ Checks running status of google.com.
 TODO..
 
 ## TODO
-[ ] Check running status of any service
+- [ ] Check running status of any service
