@@ -1,0 +1,23 @@
+{
+  "name": "pinger",
+  "version": "1.0.0",
+  "description": "Checks running status of google.com.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalvsmerk/pinger.git"
+  },
+  "author": "Vladyslav Umerenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dalvsmerk/pinger/issues"
+  },
+  "homepage": "https://github.com/dalvsmerk/pinger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "winston": "^3.3.3"
+  }
+}
