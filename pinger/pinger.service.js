@@ -6,12 +6,13 @@ const ServiceStatus = {
 class PingerService {
   static MAX_RETRY = 10;
 
-  constructor(host, networkService, loggerService) {
+  constructor(host, port, networkService, loggerService) {
     if (!host || host.length === 0) {
       throw new Error('Host must not be empty');
     }
 
     this.host = host;
+    this.port = port;
     this.networkService = networkService;
     this.loggerService = loggerService;
     this.status = ServiceStatus.UP;
@@ -23,7 +24,7 @@ class PingerService {
 
     this.intervalId = setInterval(async () => {
       try {
-        const { statusCode } = await this.networkService.get(this.host);
+        const { statusCode } = await this.networkService.get(this.host, '/', this.port);
         const message = `${this.host} responded with ${statusCode} code`;
 
         if (this.status === ServiceStatus.DOWN) {
@@ -33,7 +34,7 @@ class PingerService {
 
         this.loggerService.info(message);
       } catch (errorMessage) {
-        if (retryCounter === MAX_RETRY) {
+        if (retryCounter === PingerService.MAX_RETRY) {
           retryCounter = 0;
           this.status = ServiceStatus.DOWN;
           this.loggerService.error(`${this.host} is down`);
