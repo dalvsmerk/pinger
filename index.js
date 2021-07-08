@@ -1,5 +1,9 @@
-runApplication();
+const { setupLogger } = require('./logging');
 
-function runApplication() {
-  console.log('Pinging');
+watchServiceStatus('https://www.google.com/');
+
+function watchServiceStatus(url) {
+  const logger = setupLogger();
+
+  logger.debug(`Pinging ${url} service`);
 }
