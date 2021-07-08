@@ -20,5 +20,12 @@ function watchServiceStatus(url) {
   loggerService.debug(`Pinging ${url} service`);
 
   const pingerService = new PingerService(url, networkService, loggerService);
-  pingerService.watchStatus();
+  pingerService.start();
+
+  process.on('SIGTERM', stopPinging(pingerService));
+  process.on('exit', stopPinging(pingerService));
+}
+
+function stopPinging(pingerService) {
+  return () => pingerService.stop();
 }
