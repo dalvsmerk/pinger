@@ -4,7 +4,7 @@
   "description": "Checks running status of google.com.",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,10 @@
   "homepage": "https://github.com/dalvsmerk/pinger#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "jest": "^27.0.6",
     "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "nock": "^13.1.1"
   }
 }

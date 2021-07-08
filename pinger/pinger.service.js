@@ -28,7 +28,7 @@ class PingerService {
         const message = `${this.host} responded with ${statusCode} code`;
 
         if (this.status === ServiceStatus.DOWN) {
-          this.status === ServiceStatus.UP;
+          this.status = ServiceStatus.UP;
           this.loggerService.info(`${this.host} is up again`);
         }
 
